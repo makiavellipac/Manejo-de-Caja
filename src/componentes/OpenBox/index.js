@@ -1,11 +1,12 @@
 import React,{ useEffect,useState} from 'react';
-import {Layout,DatePicker,TimePicker,Input,Button,Spin} from 'antd';
+import {Layout,Input,Button,Spin} from 'antd';
 import propTypes from 'prop-types';
-import moment from 'moment';
 import InputWhithLabel from '../InputWithLabel';
 import BOX_SERVICE from '../../services/boxServices';
 import InputDolars from '../InputDolars';
+import InputTime from '../InputTime';
 import './index.css';
+
 
 
 
@@ -33,8 +34,6 @@ const OpenBox=({cliked})=>{
     
     const { Header,Content } = Layout;
     const {TextArea}=Input;
-    const dateFormat='YYYY-MM-DD';
-    const hourFormat='HH:mm:ss';
     const style_default={
       color:"#fff",
       background:"#4B367B",
@@ -52,10 +51,10 @@ const OpenBox=({cliked})=>{
       <Content className="content">
         <div className="content_inputs">
           <InputWhithLabel title="Fecha (yyyy/mm/dd)" w="40%">
-            <DatePicker defaultValue={moment(data.results.date_open,dateFormat)} disabled/>
+            <InputTime type='date' time={data.results.date_open}/>
           </InputWhithLabel>
           <InputWhithLabel title="Hora (hh:mm)" w="40%">
-            <TimePicker defaultValue={moment(data.results.hour_open,hourFormat)} disabled/>
+            <InputTime type='hour' time={data.results.hour_open}/>
           </InputWhithLabel>
         </div>
         <div className="content_inputs">
