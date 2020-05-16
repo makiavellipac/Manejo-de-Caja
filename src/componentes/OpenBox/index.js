@@ -1,10 +1,24 @@
-import React from 'react';
+import React,{ useEffect} from 'react';
+import BOX_SERVICE from '../../services/boxServices';
 import {Layout,DatePicker,TimePicker,InputNumber,Input,Button} from 'antd';
 import moment from 'moment';
 import InputWhithLabel from '../InputWithLabel';
 import './index.css';
 
 const OpenBox=()=>{
+    // const [data,setData]=useState({});
+    // const [response,setResponse]=useState(false);
+
+    useEffect(()=>{
+      BOX_SERVICE.getBalance()
+                 .then(response=>{
+                  //  setData(response)
+                  //  setResponse(true)
+                  console.log(response)
+                 })
+                 .catch(error=>console.log(error));
+    })
+    
     const { Header,Content } = Layout;
     const {TextArea}=Input;
     const dateFormat='YYYY-MM-DD';
