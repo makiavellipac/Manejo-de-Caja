@@ -1,10 +1,13 @@
 import React,{ useEffect,useState} from 'react';
-import BOX_SERVICE from '../../services/boxServices';
 import {Layout,DatePicker,TimePicker,Input,Button,Spin} from 'antd';
+import propTypes from 'prop-types';
 import moment from 'moment';
 import InputWhithLabel from '../InputWithLabel';
-import './index.css';
+import BOX_SERVICE from '../../services/boxServices';
 import InputDolars from '../InputDolars';
+import './index.css';
+
+
 
 const OpenBox=({cliked})=>{
     const [data,setData]=useState({});
@@ -82,4 +85,7 @@ const OpenBox=({cliked})=>{
     )
 }
 
+OpenBox.propTypes={
+  cliked:propTypes.func.isRequired
+}
 export default OpenBox;
