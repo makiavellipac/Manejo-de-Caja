@@ -1,0 +1,9 @@
+.label_close{
+    display: flex;
+    align-items: center;
+    padding: 25px;
+}
+.label_close span{
+    font-size: 25px;
+    color: #595959;
+}
