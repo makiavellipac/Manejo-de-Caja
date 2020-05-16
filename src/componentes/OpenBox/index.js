@@ -1,9 +1,10 @@
 import React,{ useEffect,useState} from 'react';
 import BOX_SERVICE from '../../services/boxServices';
-import {Layout,DatePicker,TimePicker,InputNumber,Input,Button,Spin} from 'antd';
+import {Layout,DatePicker,TimePicker,Input,Button,Spin} from 'antd';
 import moment from 'moment';
 import InputWhithLabel from '../InputWithLabel';
 import './index.css';
+import InputDolars from '../InputDolars';
 
 const OpenBox=({cliked})=>{
     const [data,setData]=useState({});
@@ -56,22 +57,10 @@ const OpenBox=({cliked})=>{
         </div>
         <div className="content_inputs">
           <InputWhithLabel title="Total anterior" w="40%">
-            <InputNumber defaultValue={data.results.value_previous_close/100} 
-                         formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 
-                         parser={value => value.replace(/\$\s?|(,*)/g, '')} 
-                         step={0.01}
-                         disabled 
-                         style={{width:"100%"}}/>
+            <InputDolars defaultValue={data.results.value_previous_close/100}/>
           </InputWhithLabel>
           <InputWhithLabel title="Total inicial" w="40%">
-            <InputNumber defaultValue={data.results.value_open===null?0:data.results.value_open} 
-                         formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 
-                         parser={value => value.replace(/\$\s?|(,*)/g, '')}
-                         min={0}
-                         step={.01} 
-                         style={{width:"100%"}}
-                         disabled={disabled}
-                         />
+            <InputDolars defaultValue={data.results.value_open===null?0:data.results.value_open} disabled={disabled}/>
           </InputWhithLabel>
         </div>
         <div className="textArea">
@@ -82,16 +71,13 @@ const OpenBox=({cliked})=>{
         {!disappear&&
           <Button style={style_default} className="button_enviar" onClick={blocked}>Enviar</Button>
         }
-        
-      
       </Content>
       }
       {!response&&
         <div style={{margin:"25%"}}>
           <Spin size="large" />
         </div>
-        
-      }
+       }
     </Layout>
     )
 }
