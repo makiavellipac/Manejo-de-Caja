@@ -8,6 +8,8 @@ import './index.css';
 const OpenBox=()=>{
     const [data,setData]=useState({});
     const [response,setResponse]=useState(false);
+    const [disabled,setDisabled]=useState(false);
+    const [disappear,setDisappear]=useState(false);
 
     useEffect(()=>{
       BOX_SERVICE.getBalance()
@@ -18,6 +20,11 @@ const OpenBox=()=>{
                  })
                  .catch(error=>console.log(error));
     },[])
+
+    const blocked=()=>{
+     setDisabled(true);
+     setDisappear(true);
+    }
     
     const { Header,Content } = Layout;
     const {TextArea}=Input;
@@ -61,15 +68,20 @@ const OpenBox=()=>{
                          parser={value => value.replace(/\$\s?|(,*)/g, '')}
                          min={0}
                          step={.01} 
-                         style={{width:"100%"}}/>
+                         style={{width:"100%"}}
+                         disabled={disabled}
+                         />
           </InputWhithLabel>
         </div>
         <div className="textArea">
           <InputWhithLabel title="Observaciones" w="100%">
-            <TextArea rows={5} defaultValue={data.results.observation}/>
+            <TextArea rows={5} defaultValue={data.results.observation} disabled={disabled}/>
           </InputWhithLabel>
         </div>
-        <Button style={style_default} className="button_enviar">Enviar</Button>
+        {!disappear&&
+          <Button style={style_default} className="button_enviar" onClick={blocked}>Enviar</Button>
+        }
+        
       
       </Content>
       }
