@@ -5,7 +5,7 @@ import moment from 'moment';
 import InputWhithLabel from '../InputWithLabel';
 import './index.css';
 
-const OpenBox=()=>{
+const OpenBox=({cliked})=>{
     const [data,setData]=useState({});
     const [response,setResponse]=useState(false);
     const [disabled,setDisabled]=useState(false);
@@ -24,6 +24,7 @@ const OpenBox=()=>{
     const blocked=()=>{
      setDisabled(true);
      setDisappear(true);
+     cliked()
     }
     
     const { Header,Content } = Layout;
