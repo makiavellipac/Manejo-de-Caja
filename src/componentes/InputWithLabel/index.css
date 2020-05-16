@@ -1,0 +1,4 @@
+.inputWithLabel{
+    display: flex;
+    flex-direction: column;
+}
