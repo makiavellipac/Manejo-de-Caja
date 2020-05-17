@@ -7,3 +7,15 @@
     font-size: 25px;
     color: #595959;
 }
+.button_agregar{
+    margin: 25px;
+    width: 170;
+    height: 50;
+    color: #fff;
+    background-color: #5BB27D;
+}
+.button_cerrar{
+    margin: 25px;
+    width: 200px;
+    height: 40px;
+}
