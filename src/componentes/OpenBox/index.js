@@ -10,11 +10,10 @@ import './index.css';
 
 
 
-const OpenBox=({cliked})=>{
+const OpenBox=({cliked,disabled,disappear,setOpenBox})=>{
     const [data,setData]=useState({});
     const [response,setResponse]=useState(false);
-    const [disabled,setDisabled]=useState(false);
-    const [disappear,setDisappear]=useState(false);
+   
 
     useEffect(()=>{
       BOX_SERVICE.getBalance()
@@ -27,8 +26,7 @@ const OpenBox=({cliked})=>{
     },[])
 
     const blocked=()=>{
-     setDisabled(true);
-     setDisappear(true);
+     setOpenBox()
      cliked()
     }
     
